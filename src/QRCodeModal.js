@@ -5,6 +5,7 @@ import {
   useDialog,
 } from 'react-st-modal';
 import QRCode from 'qrcode.react';
+import './QRCodeModal.css';
 
 const QRCodeModal = (props) => {
   const { publicURL, privateURL } = props;
@@ -12,7 +13,7 @@ const QRCodeModal = (props) => {
 
   return (
     <>
-      <ModalContent>
+      <ModalContent className="printme">
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <div>
             <h3 style={{ color: 'green' }}>Public</h3>
@@ -24,13 +25,15 @@ const QRCodeModal = (props) => {
           </div>
         </div>
       </ModalContent>
-      <ModalFooter>
+      <ModalFooter className="no-printme">
+        <ModalButton onClick={() => window.print()}>Print</ModalButton>
         <ModalButton
+          type="dark"
           onClick={() => {
             dialog.close();
           }}
         >
-          OK
+          Close
         </ModalButton>
       </ModalFooter>
     </>
