@@ -7,6 +7,8 @@ import CreateModal from './CreateModal';
 import SweepModal from './SweepModal';
 import PaperWallet from './PaperWallet';
 
+const defaultAmount = '2.0'; // default amount to fund new wallets
+
 function App(props) {
   const { near, currentUser, nearConfig, wallet } = props;
   const [generator, setGenerator] = useState(null);
@@ -38,10 +40,13 @@ function App(props) {
     if (!generator) return;
 
     try {
-      const amount = await CustomDialog(<CreateModal />, {
-        title: 'New paper wallet',
-        showCloseIcon: true,
-      });
+      const amount = await CustomDialog(
+        <CreateModal amount={defaultAmount} />,
+        {
+          title: 'New paper wallet',
+          showCloseIcon: true,
+        }
+      );
       if (amount) {
         // const paperId = await generator.create();
         if (isNaN(amount)) throw new Error('invalid number');
@@ -141,7 +146,7 @@ function App(props) {
             </tbody>
           </table>
           <h3>Paper Wallets</h3>
-          {loading && <div>Loading...</div>}
+          {loading && <div style={{ color: 'red' }}>Loading...</div>}
           <table id="wallets">
             <thead>
               <tr>

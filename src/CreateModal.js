@@ -6,9 +6,10 @@ import {
   useDialog,
 } from 'react-st-modal';
 
-const CreateModal = () => {
+const CreateModal = (props) => {
+  const { amount } = props;
   const dialog = useDialog();
-  const [value, setValue] = useState();
+  const [value, setValue] = useState(amount);
 
   return (
     <>
@@ -16,6 +17,7 @@ const CreateModal = () => {
         Amount(NEAR):{' '}
         <input
           type="text"
+          value={value}
           onChange={(e) => {
             setValue(e.target.value);
           }}
