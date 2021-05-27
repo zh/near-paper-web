@@ -17,14 +17,14 @@ class PaperWallet {
     this.privateKey = privateKey;
   }
 
-  async create() {
+  async create(amount = '2') {
     try {
       const account = this.wallet.account();
       const keyStore = account.connection.signer.keyStore;
       const paperId = `paper-${Date.now()}.${this.creator}`;
       const keyPair = KeyPair.fromRandom('ed25519');
       this.initialize(paperId, keyPair.secretKey);
-      const chargeAmount = utils.format.parseNearAmount('2.5');
+      const chargeAmount = utils.format.parseNearAmount(amount);
       await keyStore.setKey(nearConfig.networkId, paperId, keyPair);
       const result = await account.createAccount(
         paperId,

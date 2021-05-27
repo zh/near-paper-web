@@ -1,3 +1,82 @@
 @import-normalize; /* bring in normalize.css styles */
 
 /*your css styling goes here*/
+
+.App {
+  width: 100%;
+  text-align: center;
+}
+
+.App-header {
+  background-color: rgb(0, 114, 206);
+  height: 50px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+  color: white;
+  padding: 5px;
+}
+
+.App-footer {
+  background-color: rgb(0, 114, 206);
+  height: 20px;
+  align-items: center;
+  text-align: center;
+  color: white;
+  margin-top: 10px;
+}
+
+.App-footer a {
+  color: white;
+}
+
+#balance {
+  border-collapse: collapse;
+  border: 1px solid grey;
+  margin-left: auto;
+  margin-right: auto;
+  border-spacing: 1px;
+}
+
+#balance td, #balance th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#balance tr:nth-child(even){background-color: #f2f2f2;}
+
+#balance tr:hover {background-color: #ddd;}
+
+#balance th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #282c34;
+  color: white;
+}
+
+#wallets {
+  border-collapse: collapse;
+  border: 1px solid grey;
+  margin-left: auto;
+  margin-right: auto;
+  border-spacing: 1px;
+}
+
+#wallets th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #282c34;
+  color: white;
+}
+
+#wallets td, #wallets th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#wallets tr:nth-child(even){background-color: #f2f2f2;}
+
+#wallets tr:hover {background-color: #ddd;}
