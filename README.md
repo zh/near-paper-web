@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+# NEAR paper wallets generator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Paper Wallets](https://privacypros.io/wallets/paper/) are great way to onboard new users.
+They are also a great way to save funds off-chain (cold storage).
 
-## Available Scripts
+Technically it is not a difficult task - just **two QR codes with public and private key**. However some sweeping functionality need to be added to the real wallets.
 
-In the project directory, you can run:
+In case of NEAR blockchain **account name** for the wallet also need to be provided. Something as *paper-xxx.somebody.testnet*, where *somebody.testnet* is the parent account, which will create and initially fund the wallet.
 
-### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Used libraries and services
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The paper wallet generator is implemented as a SPA React application. Used libraries:
 
-### `yarn test`
+- [near-api-js](https://github.com/near/near-api-js) - A JavaScript/TypeScript library for development of DApps on the NEAR platform
+- [react-st-modal](https://github.com/Nodlik/react-st-modal) - a simple and flexible library for implementing modal dialogs.
+- [qrcode.react](https://github.com/zpao/qrcode.react) - A React component to generate QR codes
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```sh
+git clone https://github.com/zh/near-paper-web
+cd near-paper-web
+yarn install
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Usage
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Start the application with
 
-### `yarn eject`
+```sh
+yarn start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+You can also build it as static HTML pages (for example from deploying on IPFS):
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+yarn build
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+On visit to the front page, login is required. Clicking on the **'Log in'** button in the top left corner will redirect you to your NEAR web wallet for approval.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+After successful login the table with account name and balance will be visible.
 
-## Learn More
+Another table with created until now paper wallets (will be empty on the first visit) is also available.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Clicking on the **'Create new'** button will open modal dialog, asking for initial amount of NEAR to fund the paper walllet. **Creating new wallet require approval via NEAR web wallet.**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Clicking on the **'Show'** button will show a dialog with two QR codes:
 
-### Code Splitting
+- **PUBLIC** - for public access, similar to the **'Receive'** QR code in your NEAR wallet. The format of the encoded URL is: *https://wallet.testnet.near.org/send-money/${paperId}*. With this QR code you can always add new funds to the paper wallet.
+- **SECRET** - for private access. Some sweep (get funds) functionallity need to be added to the existing wallets to use this one. Format of the code is: *${paperId}:${privateKey}*
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+There is also **'Print'** button is this dialog for printing the paper wallet.
 
-### Analyzing the Bundle Size
+For now sweeping is impossible in the NEAR wallet, so clicking on the **'Sweep'** button will allow you to get the funds back or send them to somebody else. **Sweeping require approval via NEAR wallet.**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+> TODO: Create simple stand-alone sweeper application:
+> 
+> * get receiver address
+> * read **SECRET** QR code
+> * send the finds.
