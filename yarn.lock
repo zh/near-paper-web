@@ -2748,6 +2748,11 @@ bluebird@^3.5.5:
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.7.2.tgz#9f229c15be272454ffa973ace0dbee79a1b0c36f"
   integrity sha512-XpNj6GDQzdfW+r2Wnn7xiSAd7TM3jzkxGXBGTtWKuSXv1xUV+azxAm8jdWZN06QTQk+2N2XB9jRDkvbmQmcRtg==
 
+bn.js@5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-5.2.0.tgz#358860674396c6997771a9d051fcc1b57d4ae002"
+  integrity sha512-D7iWRBvnZE8ecXiLj/9wbxH7Tk79fAh8IHaTNq1RWRixsS02W+5qS+iE9yq6RYl0asXx5tw0bLhmT5pIfbSquw==
+
 bn.js@^4.0.0, bn.js@^4.1.0, bn.js@^4.11.9:
   version "4.11.9"
   resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-4.11.9.tgz#26d556829458f9d1e81fc48952493d0ba3507828"
@@ -2757,16 +2762,6 @@ bn.js@^5.0.0, bn.js@^5.1.1:
   version "5.1.3"
   resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-5.1.3.tgz#beca005408f642ebebea80b042b4d18d2ac0ee6b"
   integrity sha512-GkTiFpjFtUzU9CbMeJ5iazkCzGL3jrhzerzZIuqLABjbwRaFt33I9tUdSNryIptM+RxDet6OKm2WnLXzW51KsQ==
-
-bn.js@^5.2.0:
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-5.2.0.tgz#358860674396c6997771a9d051fcc1b57d4ae002"
-  integrity sha512-D7iWRBvnZE8ecXiLj/9wbxH7Tk79fAh8IHaTNq1RWRixsS02W+5qS+iE9yq6RYl0asXx5tw0bLhmT5pIfbSquw==
-
-bn@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/bn/-/bn-1.0.5.tgz#fdf5fdeede044884ea7ee62adff763ee99144fa5"
-  integrity sha512-7TvGbqbZb6lDzsBtNz1VkdXXV0BVmZKPPViPmo2IpvwaryF7P+QKYKACyVkwo2mZPr2CpFiz7EtgPEcc3o/JFQ==
 
 body-parser@1.19.0:
   version "1.19.0"
@@ -2800,6 +2795,16 @@ boolbase@^1.0.0, boolbase@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
   integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
+
+borsh@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/borsh/-/borsh-0.4.0.tgz#9dd6defe741627f1315eac2a73df61421f6ddb9f"
+  integrity sha512-aX6qtLya3K0AkT66CmYWCCDr77qsE9arV05OmdFpmat9qu8Pg9J5tBUPDztAW5fNh/d/MyVG/OYziP52Ndzx1g==
+  dependencies:
+    "@types/bn.js" "^4.11.5"
+    bn.js "^5.0.0"
+    bs58 "^4.0.0"
+    text-encoding-utf-8 "^1.0.2"
 
 brace-expansion@^1.1.7:
   version "1.1.11"
@@ -7384,31 +7389,22 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=
 
-near-api-js@^0.30.0:
-  version "0.30.0"
-  resolved "https://registry.yarnpkg.com/near-api-js/-/near-api-js-0.30.0.tgz#78ec4e3c0e1fb2c20e9113c47fba6d1745e574ee"
-  integrity sha512-g8gfEymHAdruRSbh6HLb34cKxJX8OjNTHpWG24Li78Sm07fd3KK60rlX57Io7GlWELNBypzFpF+rTVFnr9EsuA==
+near-api-js@^0.41.0:
+  version "0.41.0"
+  resolved "https://registry.yarnpkg.com/near-api-js/-/near-api-js-0.41.0.tgz#5e6ebba2eca922b79cb8a05445613e435aa87803"
+  integrity sha512-/dp+1JsKJAvwk4s8bFFZs1K+84lSAqPeQmXTsSGvebJh+cMu+tZsJ8jKnKbmlZ/wUG4VoCimxN8cMru+WkRlwA==
   dependencies:
-    "@types/bn.js" "^4.11.5"
-    bn.js "^5.0.0"
+    bn.js "5.2.0"
+    borsh "^0.4.0"
     bs58 "^4.0.0"
     depd "^2.0.0"
     error-polyfill "^0.1.2"
     http-errors "^1.7.2"
     js-sha256 "^0.9.0"
     mustache "^4.0.0"
-    node-fetch "^2.3.0"
+    node-fetch "^2.6.1"
     text-encoding-utf-8 "^1.0.2"
     tweetnacl "^1.0.1"
-
-near-paper@^0.1.3:
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/near-paper/-/near-paper-0.1.3.tgz#28c455e7c98d1945f32a728f5cccff05886430a1"
-  integrity sha512-C8JTNWqTk0JtweNPwBt+i3mhhhz/bueFUyXw6pLng90U0adBEzwDcR/a4RnGLx4/pwZnLZqXfLrpcfCe7ENAWA==
-  dependencies:
-    bn "^1.0.5"
-    bn.js "^5.2.0"
-    near-api-js "^0.30.0"
 
 negotiator@0.6.2:
   version "0.6.2"
@@ -7438,7 +7434,7 @@ no-case@^3.0.4:
     lower-case "^2.0.2"
     tslib "^2.0.3"
 
-node-fetch@^2.3.0:
+node-fetch@^2.6.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.1.tgz#045bd323631f76ed2e2b55573394416b639a0052"
   integrity sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw==
@@ -11067,11 +11063,6 @@ wbuf@^1.1.0, wbuf@^1.7.3:
   integrity sha512-O84QOnr0icsbFGLS0O3bI5FswxzRr8/gHwWkDlQFskhSPryQXvrTMxjxGP4+iWYoauLoBvfDpkrOauZ+0iZpDA==
   dependencies:
     minimalistic-assert "^1.0.0"
-
-web-vitals@^1.0.1:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/web-vitals/-/web-vitals-1.1.2.tgz#06535308168986096239aa84716e68b4c6ae6d1c"
-  integrity sha512-PFMKIY+bRSXlMxVAQ+m2aw9c/ioUYfDgrYot0YUa+/xa0sakubWhSDyxAKwzymvXVdF4CZI71g06W+mqhzu6ig==
 
 webidl-conversions@^5.0.0:
   version "5.0.0"
