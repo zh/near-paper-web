@@ -56,8 +56,6 @@ There is also **'Print'** button is this dialog for printing the paper wallet.
 
 For now sweeping is impossible in the NEAR wallet, so clicking on the **'Sweep'** button will allow you to get the funds back or send them to somebody else. **Sweeping require approval via NEAR wallet.**
 
-> TODO: Create simple stand-alone sweeper application:
-> 
-> * get receiver address
-> * read **SECRET** QR code
-> * send the finds.
+Until the sweeping in implemented in some real wallet, you can use the
+[simple stand-alone sweeper application](https://github.com/zh/near-paper-sweep)
+to get the funds from some paper wllet.
